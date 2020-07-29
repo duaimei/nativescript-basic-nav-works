@@ -1,32 +1,44 @@
 <template>
     <Page>
-        <ActionBar title="Welcome to NativeScript-Vue!"/>
-        <GridLayout columns="*" rows="*">
-            <Label class="message" :text="msg" col="0" row="0"/>
-        </GridLayout>
+        <ActionBar title="Home" />
+        <ScrollView>
+            <StackLayout class="home-panel">
+                <!--Add your page content here-->
+                <Label textWrap="true" text="Play with NativeScript!" />
+                <Button text="Button" @tap="onButtonTap" />
+                <Button text="second" @tap="goToSecond"
+                    class="h2 description-label" />
+            </StackLayout>
+        </ScrollView>
     </Page>
 </template>
+<script>
+    import Second from "./Next";
+    export default {
+        components: {
+            Second
+        },
+        methods: {
+            onButtonTap() {
+                console.log("Button was pressed");
+            },
 
-<script >
-  export default {
-    data() {
-      return {
-        msg: 'Hello World!'
-      }
-    }
-  }
+            goToSecond() {
+                console.log("Button was pressed");
+                this.$navigateTo(Second);
+            }
+        }
+    };
 </script>
 
 <style scoped>
-    ActionBar {
-        background-color: #53ba82;
-        color: #ffffff;
+    .home-panel {
+        vertical-align: center;
+        font-size: 20;
+        margin: 15;
     }
 
-    .message {
-        vertical-align: center;
-        text-align: center;
-        font-size: 20;
-        color: #333333;
+    .description-label {
+        margin-bottom: 15;
     }
 </style>
